@@ -107,6 +107,3 @@ Estos scripts son opcionales y se usan para tareas de validación y reproducció
 
 Las contribuciones y sugerencias son bienvenidas mediante *issues* y *pull requests* en este repositorio.
 
-## Licencia
-
-(Indica aquí la licencia que quieras usar, por ejemplo MIT, Apache 2.0, etc.)
