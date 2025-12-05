@@ -5,6 +5,3 @@
 __pycache__/
 */__pycache__/
 *.pyc
-
-# Salidas generadas
-outputs/

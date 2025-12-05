@@ -1,0 +1,92 @@
+{
+  "descripcion": "gato negro en silla roja, estilo minimalista",
+  "requeridos_es": [
+    "gato",
+    "silla"
+  ],
+  "estilos_es": [
+    "minimalista"
+  ],
+  "mejor_U": 0.46717489404616014,
+  "mejor_img": "C:\\Users\\Lenovo\\Desktop\\Agente\\outputs\\images\\1764898715_84b59c7d.png",
+  "historial": [
+    {
+      "iter": 1,
+      "prompt": "gato negro en silla roja, estilo minimalista",
+      "image": "C:\\Users\\Lenovo\\Desktop\\Agente\\outputs\\images\\1764898708_b3a9b793.png",
+      "metrics": {
+        "coverage": 0.6666666666666666,
+        "similarity": 0.09523809523809523,
+        "aesthetic": 0.7633533007386983,
+        "labels": [
+          "egyptian cat",
+          "siamese cat, siamese",
+          "rocking chair, rocker",
+          "tiger cat",
+          "folding chair",
+          "tabby, tabby cat",
+          "punching bag, punch bag, punching ball, punchball",
+          "pedestal, plinth, footstall",
+          "kelpie",
+          "schipperke"
+        ],
+        "U": 0.45743256490964446
+      },
+      "shacl": {
+        "conforms": true
+      }
+    },
+    {
+      "iter": 2,
+      "prompt": "gato negro en silla roja, estilo minimalista, incluir gato, silla",
+      "image": "C:\\Users\\Lenovo\\Desktop\\Agente\\outputs\\images\\1764898715_84b59c7d.png",
+      "metrics": {
+        "coverage": 0.6666666666666666,
+        "similarity": 0.1111111111111111,
+        "aesthetic": 0.7803189146752451,
+        "labels": [
+          "egyptian cat",
+          "siamese cat, siamese",
+          "tiger cat",
+          "tabby, tabby cat",
+          "persian cat",
+          "folding chair",
+          "rocking chair, rocker",
+          "pedestal, plinth, footstall",
+          "kelpie",
+          "lynx, catamount"
+        ],
+        "U": 0.46717489404616014
+      },
+      "shacl": {
+        "conforms": true
+      }
+    },
+    {
+      "iter": 3,
+      "prompt": "gato negro en silla roja, estilo minimalista, incluir gato, silla",
+      "image": "C:\\Users\\Lenovo\\Desktop\\Agente\\outputs\\images\\1764898748_39424a28.png",
+      "metrics": {
+        "coverage": 0.6666666666666666,
+        "similarity": 0.1111111111111111,
+        "aesthetic": 0.7803189146752451,
+        "labels": [
+          "egyptian cat",
+          "siamese cat, siamese",
+          "tiger cat",
+          "tabby, tabby cat",
+          "persian cat",
+          "folding chair",
+          "rocking chair, rocker",
+          "pedestal, plinth, footstall",
+          "kelpie",
+          "lynx, catamount"
+        ],
+        "U": 0.46717489404616014
+      },
+      "shacl": {
+        "conforms": true
+      }
+    }
+  ]
+}
