@@ -1,0 +1,456 @@
+@prefix : <http://example.org/ontologia/agi-img#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/ontologia/agi-img#> .
+
+<http://example.org/ontologia/agi-img#Ontology> rdf:type owl:Ontology ;
+                                                 rdfs:comment "Modelo conceptual para solicitudes de imagen, imágenes candidatas, elementos, modelos generativos y evaluación de calidad/cobertura."@es ;
+                                                 rdfs:label "Ontología del agente generador de imágenes"@es .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.w3.org/ns/shacl#class
+sh:class rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#condition
+sh:condition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#datatype
+sh:datatype rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#message
+sh:message rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#minCount
+sh:minCount rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#minInclusive
+sh:minInclusive rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#name
+sh:name rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#object
+sh:object rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#path
+sh:path rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#predicate
+sh:predicate rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#property
+sh:property rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#rule
+sh:rule rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#select
+sh:select rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#sparql
+sh:sparql rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#subject
+sh:subject rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/shacl#targetClass
+sh:targetClass rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/ontologia/agi-img#aplicaEstilo
+:aplicaEstilo rdf:type owl:ObjectProperty ;
+              rdfs:domain :Imagen ;
+              rdfs:range :Estilo ;
+              rdfs:label "aplica estilo"@es .
+
+
+###  http://example.org/ontologia/agi-img#candidataDe
+:candidataDe rdf:type owl:ObjectProperty ;
+             owl:inverseOf :tieneCandidata ;
+             rdfs:domain :Imagen ;
+             rdfs:range :Solicitud ;
+             rdfs:label "candidata de"@es .
+
+
+###  http://example.org/ontologia/agi-img#contieneElemento
+:contieneElemento rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Imagen ;
+                  rdfs:range :Elemento ;
+                  rdfs:label "contiene elemento"@es .
+
+
+###  http://example.org/ontologia/agi-img#generadaPor
+:generadaPor rdf:type owl:ObjectProperty ;
+             rdfs:domain :Imagen ;
+             rdfs:range :ModeloGenerativo ;
+             rdfs:label "generada por"@es .
+
+
+###  http://example.org/ontologia/agi-img#hizoSolicitud
+:hizoSolicitud rdf:type owl:ObjectProperty ;
+               rdfs:domain :Usuario ;
+               rdfs:range :Solicitud ;
+               rdfs:label "hizo solicitud"@es .
+
+
+###  http://example.org/ontologia/agi-img#imagenActual
+:imagenActual rdf:type owl:ObjectProperty ;
+              rdfs:domain :Solicitud ;
+              rdfs:range :Imagen ;
+              rdfs:label "imagen actual"@es .
+
+
+###  http://example.org/ontologia/agi-img#requiereElemento
+:requiereElemento rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Solicitud ;
+                  rdfs:range :Elemento ;
+                  rdfs:label "requiere elemento"@es .
+
+
+###  http://example.org/ontologia/agi-img#tieneCandidata
+:tieneCandidata rdf:type owl:ObjectProperty ;
+                rdfs:domain :Solicitud ;
+                rdfs:range :Imagen ;
+                rdfs:label "tiene candidata"@es .
+
+
+###  http://example.org/ontologia/agi-img#usaEvaluador
+:usaEvaluador rdf:type owl:ObjectProperty ;
+              rdfs:domain :Agente ;
+              rdfs:range :Evaluador ;
+              rdfs:label "usa evaluador"@es .
+
+
+###  http://example.org/ontologia/agi-img#usaModelo
+:usaModelo rdf:type owl:ObjectProperty ;
+           rdfs:domain :Agente ;
+           rdfs:range :ModeloGenerativo ;
+           rdfs:label "usa modelo"@es .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/ontologia/agi-img#descripcion
+:descripcion rdf:type owl:DatatypeProperty ;
+             rdfs:domain [ rdf:type owl:Class ;
+                           owl:unionOf ( :Imagen
+                                         :Solicitud
+                                       )
+                         ] ;
+             rdfs:range xsd:string ;
+             rdfs:label "descripción"@es .
+
+
+###  http://example.org/ontologia/agi-img#fecha
+:fecha rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Solicitud ;
+       rdfs:range xsd:dateTime ;
+       rdfs:label "fecha"@es .
+
+
+###  http://example.org/ontologia/agi-img#formato
+:formato rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Imagen ;
+         rdfs:range xsd:string ;
+         rdfs:label "formato"@es .
+
+
+###  http://example.org/ontologia/agi-img#resolucionX
+:resolucionX rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Imagen ;
+             rdfs:range xsd:integer ;
+             rdfs:label "resolución X"@es .
+
+
+###  http://example.org/ontologia/agi-img#resolucionY
+:resolucionY rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Imagen ;
+             rdfs:range xsd:integer ;
+             rdfs:label "resolución Y"@es .
+
+
+###  http://example.org/ontologia/agi-img#scoreCalidad
+:scoreCalidad rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Imagen ;
+              rdfs:range xsd:decimal ;
+              rdfs:label "score de calidad"@es .
+
+
+###  http://example.org/ontologia/agi-img#seed
+:seed rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Imagen ;
+      rdfs:range xsd:string ;
+      rdfs:label "seed"@es .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/ontologia/agi-img#Agente
+:Agente rdf:type owl:Class ;
+        rdfs:label "Agente"@es .
+
+
+###  http://example.org/ontologia/agi-img#Elemento
+:Elemento rdf:type owl:Class ;
+          owl:disjointWith :Imagen ,
+                           :Solicitud ,
+                           :Usuario ;
+          rdfs:label "Elemento"@es .
+
+
+###  http://example.org/ontologia/agi-img#Estilo
+:Estilo rdf:type owl:Class ;
+        owl:disjointWith :Imagen ,
+                         :Solicitud ,
+                         :Usuario ;
+        rdfs:label "Estilo"@es .
+
+
+###  http://example.org/ontologia/agi-img#Evaluador
+:Evaluador rdf:type owl:Class ;
+           owl:disjointWith :Imagen ,
+                            :Solicitud ,
+                            :Usuario ;
+           rdfs:label "Evaluador"@es .
+
+
+###  http://example.org/ontologia/agi-img#Imagen
+:Imagen rdf:type owl:Class ;
+        owl:disjointWith :ModeloGenerativo ,
+                         :Solicitud ,
+                         :Usuario ;
+        rdfs:label "Imagen"@es .
+
+
+###  http://example.org/ontologia/agi-img#ImagenDeAltaCalidad
+:ImagenDeAltaCalidad rdf:type owl:Class ;
+                     owl:equivalentClass [ owl:intersectionOf ( :Imagen
+                                                                [ rdf:type owl:Restriction ;
+                                                                  owl:onProperty :scoreCalidad ;
+                                                                  owl:someValuesFrom [ rdf:type rdfs:Datatype ;
+                                                                                       owl:onDatatype xsd:decimal ;
+                                                                                       owl:withRestrictions ( [ xsd:minInclusive 0.80
+                                                                                                              ]
+                                                                                                            )
+                                                                                     ]
+                                                                ]
+                                                              ) ;
+                                           rdf:type owl:Class
+                                         ] ;
+                     rdfs:subClassOf :Imagen ;
+                     rdfs:label "Imagen de alta calidad (score ≥ 0.80)"@es .
+
+
+###  http://example.org/ontologia/agi-img#ModeloGenerativo
+:ModeloGenerativo rdf:type owl:Class ;
+                  owl:disjointWith :Solicitud ,
+                                   :Usuario ;
+                  rdfs:label "Modelo generativo"@es .
+
+
+###  http://example.org/ontologia/agi-img#Solicitud
+:Solicitud rdf:type owl:Class ;
+           owl:disjointWith :Usuario ;
+           rdfs:label "Solicitud"@es .
+
+
+###  http://example.org/ontologia/agi-img#SolicitudConImagenAltaCalidad
+:SolicitudConImagenAltaCalidad rdf:type owl:Class ;
+                               owl:equivalentClass [ owl:intersectionOf ( :Solicitud
+                                                                          [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty :tieneCandidata ;
+                                                                            owl:someValuesFrom :ImagenDeAltaCalidad
+                                                                          ]
+                                                                        ) ;
+                                                     rdf:type owl:Class
+                                                   ] ;
+                               rdfs:label "Solicitud con imagen de alta calidad"@es .
+
+
+###  http://example.org/ontologia/agi-img#Usuario
+:Usuario rdf:type owl:Class ;
+         rdfs:label "Usuario"@es .
+
+
+###  http://www.w3.org/ns/shacl#NodeShape
+sh:NodeShape rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/shacl#PropertyShape
+sh:PropertyShape rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/shacl#SPARQLConstraint
+sh:SPARQLConstraint rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/shacl#TripleRule
+sh:TripleRule rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/ontologia/agi-img#CoberturaShape
+:CoberturaShape rdf:type owl:NamedIndividual ,
+                         sh:NodeShape ;
+                sh:sparql [ rdf:type sh:SPARQLConstraint ;
+                            sh:message "Falta cobertura: existe un Elemento requerido por la Solicitud que no aparece en ninguna de sus Imágenes candidatas."@es ;
+                            sh:select """
+      PREFIX : <http://example.org/ontologia/agi-img#>
+      SELECT ?this ?elem WHERE {
+        ?this a :Solicitud ;
+              :requiereElemento ?elem .
+        FILTER NOT EXISTS {
+          ?img a :Imagen ;
+               :candidataDe ?this ;
+               :contieneElemento ?elem .
+        }
+      }
+    """
+                          ] ;
+                sh:targetClass :Solicitud .
+
+
+###  http://example.org/ontologia/agi-img#ImagenAltaCalidadShape
+:ImagenAltaCalidadShape rdf:type owl:NamedIndividual ,
+                                 sh:NodeShape ;
+                        sh:rule [ rdf:type sh:TripleRule ;
+                                  sh:condition [ rdf:type sh:PropertyShape ;
+                                                 sh:minInclusive 0.80 ;
+                                                 sh:path :scoreCalidad
+                                               ] ;
+                                  sh:object :ImagenDeAltaCalidad ;
+                                  sh:predicate rdf:type ;
+                                  sh:subject sh:this
+                                ] ;
+                        sh:targetClass :Imagen .
+
+
+###  http://example.org/ontologia/agi-img#ImagenShape
+:ImagenShape rdf:type owl:NamedIndividual ,
+                      sh:NodeShape ;
+             sh:property [ sh:datatype xsd:decimal ;
+                           sh:minCount 1 ;
+                           sh:name "scoreCalidad requerido"@es ;
+                           sh:path :scoreCalidad
+                         ] ,
+                         [ sh:class :Solicitud ;
+                           sh:minCount 1 ;
+                           sh:name "La imagen debe pertenecer a alguna solicitud (candidataDe)"@es ;
+                           sh:path :candidataDe
+                         ] ;
+             sh:targetClass :Imagen .
+
+
+###  http://example.org/ontologia/agi-img#eval1
+:eval1 rdf:type owl:NamedIndividual ,
+                :Evaluador ;
+       rdfs:label "Evaluador base"@es .
+
+
+###  http://example.org/ontologia/agi-img#gato
+:gato rdf:type owl:NamedIndividual ,
+               :Elemento ;
+      rdfs:label "gato"@es .
+
+
+###  http://example.org/ontologia/agi-img#img_v1
+:img_v1 rdf:type owl:NamedIndividual ,
+                 :Imagen ;
+        :aplicaEstilo :minimalista ;
+        :candidataDe :s1 ;
+        :contieneElemento :gato ;
+        :generadaPor :sdXL ;
+        :descripcion "Primera candidata"@es ;
+        :formato "PNG" ;
+        :resolucionX 768 ;
+        :resolucionY 768 ;
+        :scoreCalidad 0.58 ;
+        :seed "12345" ;
+        rdfs:label "img_v1"@es .
+
+
+###  http://example.org/ontologia/agi-img#img_v2
+:img_v2 rdf:type owl:NamedIndividual ,
+                 :Imagen ;
+        :aplicaEstilo :minimalista ;
+        :candidataDe :s1 ;
+        :contieneElemento :gato ,
+                          :silla ;
+        :generadaPor :sdXL ;
+        :descripcion "Segunda candidata"@es ;
+        :formato "PNG" ;
+        :resolucionX 1024 ;
+        :resolucionY 1024 ;
+        :scoreCalidad 0.82 ;
+        :seed "67890" ;
+        rdfs:label "img_v2"@es .
+
+
+###  http://example.org/ontologia/agi-img#minimalista
+:minimalista rdf:type owl:NamedIndividual ,
+                      :Estilo ;
+             rdfs:label "minimalista"@es .
+
+
+###  http://example.org/ontologia/agi-img#s1
+:s1 rdf:type owl:NamedIndividual ,
+             :Solicitud ;
+    :requiereElemento :gato ,
+                      :silla ;
+    :descripcion "gato negro sobre silla roja, estilo minimalista"@es ;
+    :fecha "2025-09-08T12:00:00"^^xsd:dateTime ;
+    rdfs:label "Solicitud s1"@es .
+
+
+###  http://example.org/ontologia/agi-img#sdXL
+:sdXL rdf:type owl:NamedIndividual ,
+               :ModeloGenerativo ;
+      rdfs:label "Stable Diffusion XL"@es .
+
+
+###  http://example.org/ontologia/agi-img#silla
+:silla rdf:type owl:NamedIndividual ,
+                :Elemento ;
+       rdfs:label "silla"@es .
+
+
+###  http://example.org/ontologia/agi-img#usuarioJuan
+:usuarioJuan rdf:type owl:NamedIndividual ,
+                      :Usuario ;
+             rdfs:label "Juan"@es .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

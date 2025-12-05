@@ -1,0 +1,10 @@
+# Entorno virtual
+.venv/
+
+# Cachés de Python
+__pycache__/
+*/__pycache__/
+*.pyc
+
+# Salidas generadas
+outputs/
